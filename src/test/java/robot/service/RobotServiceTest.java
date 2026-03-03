@@ -104,4 +104,14 @@ class RobotServiceTest {
         String result = robotService.executeCommand("report");
         assertEquals("Output: 1,1,NORTH", result);
     }
+
+    @Test
+    void testNullCommand() {
+        assertNull(robotService.executeCommand(null));
+    }
+
+    @Test
+    void testEmptyCommand() {
+        assertNull(robotService.executeCommand(""));
+    }
 }

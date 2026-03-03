@@ -31,7 +31,8 @@ public class Robot {
     }
 
     public void place(int x, int y, Direction direction) {
-        if (x < TableConfig.MIN_X || x > TableConfig.MAX_X ||
+        if (direction == null ||
+            x < TableConfig.MIN_X || x > TableConfig.MAX_X ||
             y < TableConfig.MIN_Y || y > TableConfig.MAX_Y) {
             return;
         }

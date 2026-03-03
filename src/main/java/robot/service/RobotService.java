@@ -42,6 +42,10 @@ public class RobotService {
     }
 
     private CommandInfo validateAndGetCommandInfo(String command) {
+        if (command == null || command.trim().isEmpty()) {
+            return null;
+        }
+
         String[] parts = command.trim().split(" ");
         if (parts.length == 0) {
             return null;

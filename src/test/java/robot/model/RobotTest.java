@@ -37,6 +37,12 @@ class RobotTest {
     }
 
     @Test
+    void testNullDirection() {
+        robot.place(0,0,null);
+        assertFalse(robot.isPlaced());
+    }
+
+    @Test
     void testMove() {
         robot.place(0,0,Direction.NORTH);
         assertTrue(robot.isPlaced());
