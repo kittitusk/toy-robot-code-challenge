@@ -37,7 +37,7 @@ Once running, enter commands one per line and press Enter to execute.
 
 | Command            | Description                                                       |
 |--------------------|-------------------------------------------------------------------|
-| `PLACE X,Y,FACING` | Place the robot at (X, Y) facing NORTH, EAST, SOUTH, or WEST     |
+| `PLACE X,Y,FACING` | Place the robot at (X, Y) facing NORTH, EAST, SOUTH, or WEST      |
 | `MOVE`             | Move the robot one step forward in the direction it is facing     |
 | `LEFT`             | Rotate the robot 90° to the left                                  |
 | `RIGHT`            | Rotate the robot 90° to the right                                 |
@@ -45,18 +45,39 @@ Once running, enter commands one per line and press Enter to execute.
 
 > The robot must be placed with `PLACE` before any other command takes effect.
 
-### Example
+### Examples
 
+**a)**
 ```
 PLACE 0,0,NORTH
 MOVE
-RIGHT
+REPORT
+```
+Output: `0,1,NORTH`
+
+**b)**
+```
+PLACE 0,0,NORTH
+LEFT
+REPORT
+```
+Output: `0,0,WEST`
+
+**c)**
+```
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
 MOVE
 REPORT
 ```
+Output: `3,3,NORTH`
 
-Output:
-```
-1,1,EAST
-```
+---
 
+## Tests
+
+```bash
+mvn test
+```
