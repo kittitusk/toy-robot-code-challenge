@@ -13,11 +13,11 @@ public class RobotService {
         this.robot = new Robot();
     }
 
-    public void executeCommand(String command) {
+    public String executeCommand(String command) {
         CommandInfo validateCommandInfo = validateAndGetCommandInfo(command);
 
         if (validateCommandInfo == null) {
-            return;
+            return null;
         }
 
         switch (validateCommandInfo.getCommand()) {
@@ -25,8 +25,20 @@ public class RobotService {
             case MOVE -> robot.move();
             case LEFT -> robot.turnLeft();
             case RIGHT -> robot.turnRight();
-            case REPORT -> robot.getPosition().ifPresent(System.out::println);
+            case REPORT -> {
+                return handleReport(robot.getPosition().orElse(null));
+            }
         }
+
+        return null;
+    }
+
+    private String handleReport(String position) {
+        if(position == null) {
+            return null;
+        }
+
+        return String.format("Output: %s", position);
     }
 
     private CommandInfo validateAndGetCommandInfo(String command) {
